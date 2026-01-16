@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gutenberg Library</title>
     <style>
-      a {
-        text-decoration: none;
-      }
+        a {
+            text-decoration: none;
+        }
 
-      form {
-        display: inline-block;
-        padding: 20px;
-        border: 2px solid #333;
-        border-radius: 5px;
-      }
+        form {
+            display: inline-block;
+            padding: 20px;
+            border: 2px solid #333;
+            border-radius: 5px;
+        }
 
-      form div {
-        margin-bottom: 10px;
-      }
+        form div {
+            margin-bottom: 10px;
+        }
     </style>
   </head>
   <body>
     <h1>Gutenberg Library</h1>
+
+    <p>Search for books</p>
 
     <form action="/search">
       <div>
@@ -43,13 +45,13 @@
     </form>
 
     <ul>
-      <li>Total books in library: {{data.count}}</li>
-      <li>You are at page: {{page}}</li>
+      <li>Total books in library: {{ data.count }}</li>
+      <li>You are at page: {{ page }}</li>
       <li>
-        <a href="/?page={{page+1}}">➡️ Go to next page</a>
+        <a href="/?page={{ page+1 }}">➡️ Go to next page</a>
       </li>
       <li>
-        <a href="/?page={{page-1}}">⬅️ Go to previous page</a>
+        <a href="/?page={{ page-1 }}">⬅️ Go to previous page</a>
       </li>
     </ul>
 
@@ -57,14 +59,14 @@
 
     <ul>
       {% for book in data.results %}
-      <li>
-        <a href="{{book.formats['text/html']}}">{{book.title}}</a>
-        <ul>
-          {% for author in book.authors %}
-          <li>{{author.name}} ({{author.birth_year}} ~ {{author.death_year}})</li>
-          {% endfor %}
-        </ul>
-      </li>
+        <li>
+          <a href="{{ book.formats['text/html'] }}">{{ book.title }}</a>
+          <ul>
+            {% for author in book.authors %}
+              <li>{{ author.name }} ({{ author.birth_year }} ~ {{ author.death_year }})</li>
+            {% endfor %}
+          </ul>
+        </li>
       {% endfor %}
     </ul>
   </body>
